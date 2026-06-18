@@ -1,0 +1,236 @@
+/* ========== CART ANIMATION - VIP EDITION ========== */
+
+/* Floating Cart Item */
+.cart-animation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+.floating-product {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 30px rgba(212, 0, 0, 0.6);
+  animation: flyToCart 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+/* Glow Trail */
+.floating-product::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 0, 0, 0.3), transparent 70%);
+  animation: glowPulse 0.6s ease-in-out infinite alternate;
+}
+
+/* Gold Sparkles */
+.sparkle-container {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99998;
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: gold;
+  box-shadow: 0 0 10px gold;
+  animation: sparkleBurst 0.8s ease-out forwards;
+}
+
+.sparkle.gold {
+  background: #ffd700;
+  box-shadow: 0 0 15px #ffd700;
+}
+
+.sparkle.red {
+  background: #d40000;
+  box-shadow: 0 0 15px #d40000;
+}
+
+.sparkle.silver {
+  background: #e0e0e0;
+  box-shadow: 0 0 15px #e0e0e0;
+}
+
+/* VIP Notification */
+.vip-notification {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(10, 10, 10, 0.98));
+  border: 1px solid rgba(212, 0, 0, 0.5);
+  border-radius: 20px;
+  padding: 20px 40px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 20px 60px rgba(212, 0, 0, 0.3);
+  z-index: 100000;
+  animation: vipSlideUp 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.vip-notification .vip-icon {
+  font-size: 2rem;
+  animation: vipPulse 1s ease-in-out infinite;
+}
+
+.vip-notification .vip-text {
+  text-align: left;
+}
+
+.vip-notification .vip-text h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #d40000;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+.vip-notification .vip-text p {
+  font-size: 0.85rem;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+.vip-notification .vip-close {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 0 10px;
+  transition: color 0.3s;
+}
+
+.vip-notification .vip-close:hover {
+  color: #d40000;
+}
+
+/* ========== ANIMATIONS ========== */
+
+/* Fly to Cart */
+@keyframes flyToCart {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1.5) rotate(20deg);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(0.8) rotate(-10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.2) rotate(5deg);
+    opacity: 0;
+  }
+}
+
+/* Glow Pulse */
+@keyframes glowPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Sparkle Burst */
+@keyframes sparkleBurst {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* VIP Slide Up */
+@keyframes vipSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* VIP Pulse */
+@keyframes vipPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Cart Bounce */
+@keyframes cartBounce {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.3);
+  }
+  60% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cart-bounce {
+  animation: cartBounce 0.5s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .vip-notification {
+    padding: 15px 25px;
+    width: 90%;
+    bottom: 80px;
+  }
+  
+  .vip-notification .vip-text h3 {
+    font-size: 0.9rem;
+  }
+  
+  .vip-notification .vip-text p {
+    font-size: 0.75rem;
+  }
+  
+  .floating-product {
+    width: 40px;
+    height: 40px;
+  }
+}

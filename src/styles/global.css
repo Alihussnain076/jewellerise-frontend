@@ -1,0 +1,496 @@
+/* ========== ROOT VARIABLES - LUXURY EDITION ========== */
+:root {
+  /* Dark Luxury Colors */
+  --bg-deep-black: #050505;
+  --bg-rich-black: #0a0a0a;
+  --bg-charcoal: #111111;
+  --bg-card: #0d0d0d;
+  
+  /* Metallic Accents */
+  --silver-light: #ffffff;
+  --silver: #e0e0e0;
+  --silver-dark: #a0a0a0;
+  --silver-matte: #888888;
+  
+  /* Luxury Red */
+  --luxury-red: #d40000;
+  --luxury-red-dark: #8b0000;
+  --luxury-red-glow: rgba(212, 0, 0, 0.3);
+  
+  /* Glass Effects */
+  --glass-bg: rgba(5, 5, 5, 0.85);
+  --glass-border: rgba(224, 224, 224, 0.1);
+  --glass-border-light: rgba(224, 224, 224, 0.05);
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(212, 0, 0, 0.3);
+  
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-secondary: 'Playfair Display', Georgia, serif;
+}
+
+/* ========== BASE STYLES ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: linear-gradient(135deg, var(--bg-deep-black) 0%, var(--bg-rich-black) 50%, var(--bg-charcoal) 100%);
+  color: var(--silver);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ========== CONTAINER ========== */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--silver-light);
+}
+
+h1 {
+  font-size: 3.5rem;
+  letter-spacing: 4px;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: 3px;
+}
+
+h3 {
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+}
+
+p {
+  color: var(--silver-matte);
+  line-height: 1.8;
+}
+
+/* ========== BUTTONS ========== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--luxury-red), var(--luxury-red-dark));
+  color: var(--silver-light);
+  border: none;
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+  gap: 15px;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--silver);
+  border: 1px solid var(--glass-border);
+  padding: 12px 28px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--luxury-red);
+  color: var(--luxury-red);
+  transform: translateY(-2px);
+}
+
+/* ========== PRODUCT CARD ========== */
+.product-card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  border: 1px solid var(--glass-border);
+  position: relative;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(224, 224, 224, 0.03), transparent);
+  transition: left 0.6s ease;
+}
+
+.product-card:hover::before {
+  left: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.product-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  color: var(--silver-light);
+}
+
+.product-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--luxury-red);
+  margin: 0.5rem 0;
+}
+
+/* ========== FILTER SECTION ========== */
+.filter-section {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--glass-border);
+}
+
+.filter-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-select,
+.search-input {
+  padding: 12px 18px;
+  background: rgba(224, 224, 224, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  font-size: 0.85rem;
+  color: var(--silver);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.filter-select:focus,
+.search-input:focus {
+  border-color: var(--luxury-red);
+  background: rgba(224, 224, 224, 0.08);
+}
+
+.filter-select option {
+  background: var(--bg-rich-black);
+}
+
+/* ========== TOAST NOTIFICATION ========== */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, var(--luxury-red), var(--luxury-red-dark));
+  color: var(--silver-light);
+  padding: 14px 28px;
+  border-radius: 50px;
+  z-index: 10000;
+  animation: slideInRight 0.4s ease;
+  box-shadow: var(--shadow-glow);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-charcoal);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--luxury-red);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--luxury-red-dark);
+}
+
+/* ========== SELECTION ========== */
+::selection {
+  background: var(--luxury-red);
+  color: var(--silver-light);
+}
+
+/* ========== LOADING ANIMATION ========== */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--glass-border);
+  border-top-color: var(--luxury-red);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 50px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 30px;
+  }
+  
+  h1 {
+    font-size: 2.8rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+    letter-spacing: 3px;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  .product-image {
+    height: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 10px 24px;
+    font-size: 0.8rem;
+  }
+  
+  .filter-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .filter-select,
+  .search-input {
+    width: 100%;
+  }
+  
+  .toast {
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-image {
+    height: 200px;
+  }
+  
+  .product-info {
+    padding: 1rem;
+  }
+  
+  .product-title {
+    font-size: 0.9rem;
+  }
+  
+  .product-price {
+    font-size: 1.1rem;
+  }
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease;
+}
+
+/* ========== UTILITY CLASSES ========== */
+.text-center {
+  text-align: center;
+}
+
+.text-red {
+  color: var(--luxury-red);
+}
+
+.text-silver {
+  color: var(--silver);
+}
+
+.bg-red {
+  background: linear-gradient(135deg, var(--luxury-red), var(--luxury-red-dark));
+}
+
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* ========== HOVER EFFECTS ========== */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+/* ========== BREADCRUMB ========== */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--silver-matte);
+  margin-bottom: 20px;
+}
+
+.breadcrumb a {
+  color: var(--silver);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.breadcrumb a:hover {
+  color: var(--luxury-red);
+}
+
+/* ========== PAGINATION ========== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  color: var(--silver);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.pagination button:hover {
+  border-color: var(--luxury-red);
+  color: var(--luxury-red);
+}
+
+.pagination button.active {
+  background: linear-gradient(135deg, var(--luxury-red), var(--luxury-red-dark));
+  border-color: var(--luxury-red);
+  color: white;
+}
